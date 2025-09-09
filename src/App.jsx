@@ -7,7 +7,7 @@ import RegistrationPage from "./pages/VotersRegistration";
 import VoterLoginPage from "./pages/VoterLoginPage";
 import AdminRegister from "./pages/AdminRegisterPage";
 import AdminLoginPage from "./pages/AdminLoginPage";
-import NotFound from "./pages/NotFound";
+import NotFound from "./pages/Notfound";
 
 import { adminRoutes } from "./routes/AdminRoutes";
 import { chairmanRoutes } from "./routes/chairmanRoutes";
