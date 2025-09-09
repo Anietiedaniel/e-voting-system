@@ -10,7 +10,7 @@ import AdminLoginPage from "./pages/AdminLoginPage";
 import NotFound from "./pages/Notfound";
 
 import { adminRoutes } from "./routes/AdminRoutes";
-import { chairmanRoutes } from "./routes/chairmanRoutes";
+import { chairmanRoutes } from "./routes/ChairmanRoutes";
 import { VoterRoutes } from "./routes/VoterRoutes";
 
 export default function App() {
