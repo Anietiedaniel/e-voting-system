@@ -1,7 +1,0 @@
-	OW78WCU1
-    3SY5TOXC
-    EXUY5KSP
-
-git branch -M main
-git remote add origin https://github.com/Anietiedaniel/E-voting-system.git
-git push -u origin main
