@@ -1,7 +1,8 @@
 // src/api.js
 import axios from "axios";
 
-const baseURL = "e-voting-system-backend.vercel.app/api";
+const baseURL = "https://e-voting-system-backend.vercel.app/api";
+
 
 const api = axios.create({
   baseURL,
