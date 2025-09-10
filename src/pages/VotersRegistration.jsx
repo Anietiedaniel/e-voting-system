@@ -22,7 +22,6 @@ export default function RegisterPage() {
       const res = await api.post("/auth/register", { 
         name, 
         email, 
-        voterId, 
         role: "voter" 
       });
 
@@ -31,7 +30,6 @@ export default function RegisterPage() {
 
       setName("");
       setEmail("");
-      setVoterId("");
 
       setTimeout(() => {
         setModalVisible(false);
@@ -82,18 +80,6 @@ export default function RegisterPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="example@email.com"
-              required
-              className="w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 transition"
-            />
-          </div>
-
-          <div>
-            <label className="block text-gray-700 font-semibold mb-2">Voter ID</label>
-            <input
-              type="text"
-              value={voterId}
-              onChange={(e) => setVoterId(e.target.value)}
-              placeholder="Enter your Voter ID"
               required
               className="w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 transition"
             />
