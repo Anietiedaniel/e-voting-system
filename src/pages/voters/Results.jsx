@@ -94,13 +94,17 @@ export default function Results() {
                       <CartesianGrid strokeDasharray="3 3" />
                       <XAxis
                         type="number"
-                        tickFormatter={(v) => Math.round(v)} // ✅ X-axis integers
+                        allowDecimals={false} // ✅ no decimals
+                        domain={[0, "dataMax + 1"]} // ✅ start at 0, end above max
+                        tickCount={10} // ✅ fewer ticks
+                        tickFormatter={(v) =>
+                          Number.isInteger(v) ? v : ""
+                        } // ✅ show only integers
                       />
                       <YAxis dataKey="name" type="category" width={120} />
                       <Tooltip
-                        formatter={(value) => [Math.round(value), "Votes"]} // ✅ Tooltip integers
+                        formatter={(value) => [Math.round(value), "Votes"]}
                       />
-
                       <Bar
                         dataKey="votes"
                         fill="#6b21a8"
@@ -109,7 +113,7 @@ export default function Results() {
                         <LabelList
                           dataKey="votes"
                           position="right"
-                          formatter={(val) => Math.round(val)} // ✅ Labels integers
+                          formatter={(val) => Math.round(val)}
                           fill="#111827"
                           fontSize={12}
                         />
