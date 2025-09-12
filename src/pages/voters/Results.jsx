@@ -23,10 +23,12 @@ export default function Results() {
       const res = await api.get("/admin/results");
       const sortedResults = res.data.map((election) => {
         if (election.candidates && election.candidates.length > 0) {
-          // Sort candidates by votes descending
-          const sortedCandidates = [...election.candidates].sort(
-            (a, b) => b.votes - a.votes
-          );
+          const sortedCandidates = [...election.candidates]
+            .map((c) => ({
+              ...c,
+              votes: Math.round(c.votes), // ✅ Ensure votes are integers
+            }))
+            .sort((a, b) => b.votes - a.votes);
           return { ...election, candidates: sortedCandidates };
         }
         return election;
@@ -90,19 +92,24 @@ export default function Results() {
                       margin={{ top: 10, right: 30, left: 50, bottom: 10 }}
                     >
                       <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis type="number" />
+                      <XAxis
+                        type="number"
+                        tickFormatter={(v) => Math.round(v)} // ✅ X-axis integers
+                      />
                       <YAxis dataKey="name" type="category" width={120} />
-                      <Tooltip />
+                      <Tooltip
+                        formatter={(value) => [Math.round(value), "Votes"]} // ✅ Tooltip integers
+                      />
 
                       <Bar
                         dataKey="votes"
                         fill="#6b21a8"
                         radius={[0, 8, 8, 0]}
-                        label={{ position: "right", fill: "#4b5563" }}
                       >
                         <LabelList
                           dataKey="votes"
                           position="right"
+                          formatter={(val) => Math.round(val)} // ✅ Labels integers
                           fill="#111827"
                           fontSize={12}
                         />
